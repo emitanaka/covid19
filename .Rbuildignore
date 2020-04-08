@@ -1,0 +1,4 @@
+^data-raw$
+^covid19\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
