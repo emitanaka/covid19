@@ -2,14 +2,14 @@
 # https://www.theguardian.com/au
 
 library(tidyverse)
-library(googlesheets4)
+# library(googlesheets4)
 library(jsonlite)
 library(here)
 
-sheets_deauth()
+# sheets_deauth()
 
-df_updates <- read_sheet("1q5gdePANXci8enuiS4oHUJxcxC13d6bjMRSicakychE", sheet = "updates")
-df_age <- read_sheet("1q5gdePANXci8enuiS4oHUJxcxC13d6bjMRSicakychE", sheet = "age distribution")
+# df_updates <- read_sheet("1q5gdePANXci8enuiS4oHUJxcxC13d6bjMRSicakychE", sheet = "updates")
+# df_age <- read_sheet("1q5gdePANXci8enuiS4oHUJxcxC13d6bjMRSicakychE", sheet = "age distribution")
 
 # convert all to character so as not to get error
 # in particular nsw has a count of "1-4". 
