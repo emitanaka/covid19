@@ -1,0 +1,31 @@
+on: 
+  schedule: 
+    - cron: '* 23 * * *'
+
+name: fetch-by-suburb
+
+jobs:
+  fetch-people:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install dependencies
+        run: |
+          install.packages(c("googlesheets4", "tidyverse", "here", "jsonlite"))
+        shell: Rscript {0}
+        
+      - name: Run script to fetch data by suburb
+        run: Rscript --vanilla ./data-raw/covid19_by_suburb.R
+      - name: Commit files
+        run: |
+          echo ${{ github.ref }}
+          git add .
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "automatic update for suburb data" -a | exit 0
+      - name: Push changes
+        if: github.ref == 'refs/heads/master'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
