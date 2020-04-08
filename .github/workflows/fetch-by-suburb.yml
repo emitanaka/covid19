@@ -5,7 +5,7 @@ on:
 name: fetch-by-suburb
 
 jobs:
-  fetch-people:
+  fetch-by-suburb:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
